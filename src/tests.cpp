@@ -44,5 +44,14 @@ int main(int argc, char* argv[]) {
 
   BMPImage move = createImg();
   move.save("move_constructor.bmp");
+
+  BMPImage load;
+  if(load.load("move_constructor.bmp")) {
+    load.save("loaded.bmp");
+  } else {
+    std::cout << "Error loading" << std::endl;
+    std::cout << load.getError() << std::endl;
+  }
+  
   std::cout << "Done" << std::endl;
 }

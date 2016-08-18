@@ -14,6 +14,8 @@ class BMPImage {
   ~BMPImage();
   void setPixel(int x, int y, char r, char g, char b);
   void save(std::string filename);
+  bool load(std::string filename);
+  std::string getError();
  private:
   void cleanup();
   char **red;
@@ -21,6 +23,7 @@ class BMPImage {
   char **blue;
   int width;
   int height;
+  std::string error;
 };
 
 #endif
