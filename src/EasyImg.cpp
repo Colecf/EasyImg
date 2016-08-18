@@ -30,7 +30,46 @@ BMPImage::BMPImage(int w, int h) {
     blue[i] = new char[w];
   }
 }
-BMPImage::~BMPImage() {
+
+BMPImage::BMPImage(const BMPImage& other) {
+  width = other.width;
+  height = other.height;
+  red = new char*[height];
+  green = new char*[height];
+  blue = new char*[height];
+  for(int i=0; i<height; i++) {
+    red[i] = new char[width];
+    green[i] = new char[width];
+    blue[i] = new char[width];
+    for(int j=0; j<width; j++) {
+      red[i][j] = other.red[i][j];
+      green[i][j] = other.green[i][j];
+      blue[i][j] = other.blue[i][j];
+    }
+  }
+}
+
+BMPImage& BMPImage::operator= (const BMPImage& other) {
+  cleanup();
+  width = other.width;
+  height = other.height;
+  red = new char*[height];
+  green = new char*[height];
+  blue = new char*[height];
+  for(int i=0; i<height; i++) {
+    red[i] = new char[width];
+    green[i] = new char[width];
+    blue[i] = new char[width];
+    for(int j=0; j<width; j++) {
+      red[i][j] = other.red[i][j];
+      green[i][j] = other.green[i][j];
+      blue[i][j] = other.blue[i][j];
+    }
+  }
+  return *this;
+}
+
+void BMPImage::cleanup() {
   for(int i=0; i<height; i++) {
     delete[] red[i];
     delete[] green[i];
@@ -39,6 +78,12 @@ BMPImage::~BMPImage() {
   delete[] red;
   delete[] green;
   delete[] blue;
+  width = 0;
+  height = 0;
+}
+
+BMPImage::~BMPImage() {
+  cleanup();
 }
 
 void BMPImage::setPixel(int x, int y, char r, char g, char b) {
