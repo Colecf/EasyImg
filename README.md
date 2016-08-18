@@ -31,3 +31,5 @@ int main() {
   assert(img2.getHeight() == 50);
 }
 ```
+
+Currently only works with no compression 24bpp images.
