@@ -3,6 +3,19 @@
 #include <string>
 #include <stdint.h>
 
-void writeBMP(std::string filename, unsigned char** pixels, uint32_t w, uint32_t h);
+class BMPImage {
+ public:
+  BMPImage();
+  BMPImage(int w, int h);
+  ~BMPImage();
+  void setPixel(int x, int y, char r, char g, char b);
+  void save(std::string filename);
+ private:
+  char **red;
+  char **green;
+  char **blue;
+  int width;
+  int height;
+};
 
 #endif

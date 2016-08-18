@@ -2,20 +2,16 @@
 #include <iostream>
 
 int main(int argc, char* argv[]) {
-  unsigned char **pixels = new unsigned char*[150];
-  for(int i=0; i<150; i++) {
-    pixels[i] = new unsigned char[50*3];
-    for(int j=0; j<50; j++) {
-      pixels[i][j*3+1] = 0;
-      if(i ==j) {
-        pixels[i][j*3+0] = 0;
-        pixels[i][j*3+2] = 255;
+  BMPImage img(50, 150);
+  for(int i=0; i<50; i++) {
+    for(int j=0; j<150; j++) {
+      if(i ==j/2) {
+        img.setPixel(i, j, 0, 0, 255);
       } else {
-        pixels[i][j*3+2] = 0;
-        pixels[i][j*3+0] = 255;
+        img.setPixel(i, j, 255, 0, 0);
       }
     }
   }
-  writeBMP("out.bmp", pixels, 150, 50);
+  img.save("out.bmp");
   std::cout << "Done" << std::endl;
 }
