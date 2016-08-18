@@ -1,7 +1,6 @@
 #ifndef EASYIMG_H
 #define EASYIMG_H
 #include <string>
-#include <stdint.h>
 
 class BMPImage {
  public:

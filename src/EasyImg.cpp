@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <stdint.h>
 #include "EasyImg.h"
 using namespace std;
 
