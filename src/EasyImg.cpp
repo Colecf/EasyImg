@@ -134,6 +134,31 @@ void BMPImage::setPixel(int x, int y, char r, char g, char b) {
   }
 }
 
+char BMPImage::getRed(int x, int y) {
+  if(x >= 0 && x < width &&
+     y >= 0 && y < height) {
+    return red[y][x];
+  }
+  return 0;
+}
+char BMPImage::getGreen(int x, int y) {
+  if(x >= 0 && x < width &&
+     y >= 0 && y < height) {
+    return green[y][x];
+  }
+  return 0;
+}
+char BMPImage::getBlue(int x, int y) {
+  if(x >= 0 && x < width &&
+     y >= 0 && y < height) {
+    return blue[y][x];
+  }
+  return 0;
+}
+int BMPImage::getWidth() { return width; }
+int BMPImage::getHeight() { return height; }
+
+
 void BMPImage::save(string filename) {
   ofstream outfile;
   outfile.open(filename, ios::out | ios::binary | ios::trunc);

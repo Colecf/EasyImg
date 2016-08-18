@@ -12,6 +12,12 @@ class BMPImage {
   BMPImage& operator= (BMPImage&&);       //move assignment
   ~BMPImage();
   void setPixel(int x, int y, char r, char g, char b);
+  char getRed(int x, int y);
+  char getGreen(int x, int y);
+  char getBlue(int x, int y);
+  int getWidth();
+  int getHeight();
+  
   void save(std::string filename);
   bool load(std::string filename);
   std::string getError();
