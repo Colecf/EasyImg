@@ -1,6 +1,20 @@
 #include "EasyImg.h"
 #include <iostream>
 
+BMPImage createImg() {
+  BMPImage img(50, 50);
+  for(int i=0; i<50; i++) {
+    for(int j=0; j<50; j++) {
+      if(i==j || i==49-j) {
+        img.setPixel(i, j, 0, 0, 0);
+      } else {
+        img.setPixel(i, j, 255, 255, 255);
+      }
+    }
+  }
+  return img;
+}
+
 int main(int argc, char* argv[]) {
   {
     //tests saving and deleting an empty img
@@ -27,5 +41,8 @@ int main(int argc, char* argv[]) {
 
   img.save("out.bmp");
   img2.save("out2.bmp");
+
+  BMPImage move = createImg();
+  move.save("move_constructor.bmp");
   std::cout << "Done" << std::endl;
 }

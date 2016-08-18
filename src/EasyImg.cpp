@@ -69,6 +69,28 @@ BMPImage& BMPImage::operator= (const BMPImage& other) {
   return *this;
 }
 
+BMPImage::BMPImage(BMPImage&& other) {
+  width = other.width;
+  height = other.height;
+  red = other.red;
+  green = other.green;
+  blue = other.blue;
+  other.width = other.height = 0;
+  other.red = other.green = other.blue = nullptr;
+}
+BMPImage& BMPImage::operator= (BMPImage&& other) {
+  cleanup();
+  width = other.width;
+  height = other.height;
+  red = other.red;
+  green = other.green;
+  blue = other.blue;
+  other.width = other.height = 0;
+  other.red = other.green = other.blue = nullptr;
+  return *this;
+}
+
+
 void BMPImage::cleanup() {
   for(int i=0; i<height; i++) {
     delete[] red[i];

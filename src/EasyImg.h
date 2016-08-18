@@ -7,8 +7,10 @@ class BMPImage {
  public:
   BMPImage();
   BMPImage(int w, int h);
-  BMPImage(const BMPImage&);
-  BMPImage& operator= (const BMPImage&);
+  BMPImage(const BMPImage&);              //copy constructor
+  BMPImage& operator= (const BMPImage&);  //copy assignment
+  BMPImage(BMPImage&&);                   //move constructor
+  BMPImage& operator= (BMPImage&&);       //move assignment
   ~BMPImage();
   void setPixel(int x, int y, char r, char g, char b);
   void save(std::string filename);
