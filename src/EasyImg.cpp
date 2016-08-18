@@ -171,7 +171,9 @@ void BMPImage::save(string filename) {
       outfile.write((const char*)&green[row][col], 1);
       outfile.write((const char*)&red[row][col], 1);
     }
-    outfile.write(zero, (col*3)%4);
+    if((col*3)%4 > 0) { 
+      outfile.write(zero, 4-(col*3)%4);
+    }
   }
   
   outfile.close();
